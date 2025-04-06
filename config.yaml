@@ -3,14 +3,14 @@ kind: ClusterConfig
 
 metadata:
   name: my-eks-cluster
-  region: us-west-1  # Change the region as needed
+  region: us-east-1  # Change the region as needed
 
 nodeGroups:
   - name: worker-nodes
     instanceType: t3.medium  # You can adjust instance type as needed
-    desiredCapacity: 4
-    minSize: 4
-    maxSize: 4
+    desiredCapacity: 3
+    minSize: 3
+    maxSize: 3
     iam:
       withAddonPolicies:
         imageBuilder: true  # You can add other necessary IAM policies based

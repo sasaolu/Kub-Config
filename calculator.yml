@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app-calc
+  name: calc-deploy
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: web-app-calc
+      app: magic-calc
   template:
     metadata:
       labels:
-        app: web-app-calc
+        app: magic-calc
     spec:
       containers:
-        - name: web-app-calc
-          image: sasaolu/web-apps:calculator
+        - name: magic-calc
+          image: sasaolu/web-apps:magic-calculator
           ports:
-            - containerPort: 80
+            - containerPort: 8085
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app-service-calc
+  name: calc-service
 spec:
   type: LoadBalancer
   selector:
-    app: web-app-calc
+    app: magic-calc
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80
+      targetPort: 8085

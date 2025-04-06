@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app
+  name: tindog-deploy
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: web-app
+      app: tindog
   template:
     metadata:
       labels:
-        app: web-app
+        app: tindog
     spec:
       containers:
-        - name: web-apps
+        - name: tindog
           image: sasaolu/web-apps:tindog
           ports:
             - containerPort: 80
@@ -22,11 +22,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-app-service
+  name: tindog-service
 spec:
   type: LoadBalancer
   selector:
-    app: web-app
+    app: tindog
   ports:
     - protocol: TCP
       port: 80
